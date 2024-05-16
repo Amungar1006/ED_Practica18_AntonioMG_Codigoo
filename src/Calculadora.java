@@ -27,12 +27,12 @@ public class Calculadora {
                 System.out.println("Seleccione opción de nuevo: ");
                 opt = sc.nextInt();
             }
-            double n1 = 0, n2=0;
+            int n1 = 0, n2=0;
             if(opt<5){
                 System.out.println("\nNúmero 1: ");
-                n1 = sc.nextDouble();
+                n1 = sc.nextInt();
                 System.out.println("Número 2: ");
-                n2 = sc.nextDouble();
+                n2 = sc.nextInt();
             }
 
             switch(opt){
@@ -60,24 +60,24 @@ public class Calculadora {
 
 
     // Método para realizar una Suma
-    public static double suma(double n1, double n2) {
+    public static int suma(int n1, int n2) {
         return n1 + n2;
     }
 
     // Método para realizar una Resta
-    public static double resta(double n1, double n2) {
+    public static int resta(int n1, int n2) {
         return n1 - n2;
     }
 
     // Método para realizar una Multiplicación
-    public static double multiplica(double n1, double n2) {
+    public static int multiplica(int n1, int n2) {
         return n1 * n2;
     }
 
     // Método para realizar una División
-    public static double divide(double n1, double n2) {
+    public static double divide(int n1, int n2) {
         if (n2 != 0) {
-            return n1 / n2;
+            return (double) n1 / n2;
         } else {
             throw new ArithmeticException("No es válida la división entre 0");
         }
