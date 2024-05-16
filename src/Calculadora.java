@@ -1,87 +1,84 @@
-import java.util.Scanner;
 
 public class Calculadora {
 
-    public static void main(String[] args) {
+    private double ans;
 
-        Scanner sc = new Scanner(System.in);
-        boolean bucle = true;
+    public double getAns() {
+        return ans;
+    }
 
-        while(bucle){
 
-            System.out.println("\n-----------------------------");
-            System.out.println("-        CALCULADORA        -");
-            System.out.println("-----------------------------");
-            System.out.println("-  1. Suma                  -");
-            System.out.println("-  2. Resta                 -");
-            System.out.println("-  3. Multiplicación        -");
-            System.out.println("-  4. División              -");
-            System.out.println("-  5. Salir                 -");
-            System.out.println("-----------------------------");
-            System.out.println("Seleccione opción: ");
-            int opt = sc.nextInt();
-
-            // Bucle opción no valida, hasta que sea válida
-            while(opt < 1 || opt > 5){
-                System.out.println("\n¡¡Opción no valida!!");
-                System.out.println("Seleccione opción de nuevo: ");
-                opt = sc.nextInt();
-            }
-            int n1 = 0, n2=0;
-            if(opt<5){
-                System.out.println("\nNúmero 1: ");
-                n1 = sc.nextInt();
-                System.out.println("Número 2: ");
-                n2 = sc.nextInt();
-            }
-
-            switch(opt){
-                case 1:
-                    System.out.println("\nResultado: " + suma(n1, n2) +"\n\n");
-                    break;
-                case 2:
-                    System.out.println("\nResultado: " + resta(n1, n2) +"\n\n");
-                    break;
-                case 3:
-                    System.out.println("\nResultado: " + multiplica(n1, n2) +"\n\n");
-                    break;
-                case 4:
-                    System.out.println("\nResultado: " + divide(n1, n2) +"\n\n");
-                    break;
-                case 5:
-                    bucle = false;
-                    break;
-            }
-        }
-        sc.close();
-
+    // Constructor
+    public Calculadora() {
+        ans = 0.0;  // memoria resultado anterior
     }
 
 
 
-    // Método para realizar una Suma
-    public static int suma(int n1, int n2) {
-        return n1 + n2;
+    // Método para realizar una Suma de dos numeros
+    public double suma(double n1, double n2) {
+        ans = n1 + n2;
+        return ans;
     }
 
-    // Método para realizar una Resta
-    public static int resta(int n1, int n2) {
-        return n1 - n2;
+    // Sobrecarga Método suma para realizar una Suma sobre ans
+    public double suma(double n1) {
+        ans += n1;
+        return ans;
     }
 
-    // Método para realizar una Multiplicación
-    public static int multiplica(int n1, int n2) {
-        return n1 * n2;
+
+    // Método para realizar una Resta de dos numeros
+    public double resta(double n1, double n2) {
+        ans = n1 - n2;
+        return ans;
     }
 
-    // Método para realizar una División
-    public static double divide(int n1, int n2) {
+    // Sobrecarga Método Resta para realizar una Resta sobre ans
+    public double resta(double n1) {
+        ans -= n1;
+        return ans;
+    }
+
+
+    // Método para realizar una Multiplicación de dos numeros
+    public double multiplica(double n1, double n2) {
+        ans = n1 * n2;
+        return ans;
+    }
+
+    // Sobrecarga Método multiplica para realizar una Multiplicación sobre ans
+    public double multiplica(double n1) {
+        ans *= n1;
+        return ans;
+    }
+
+
+    // Método para realizar una División de dos numeros
+    public double divide(double n1, double n2) {
         if (n2 != 0) {
-            return (double) n1 / n2;
+            ans = n1 / n2;
+            return ans;
         } else {
             throw new ArithmeticException("No es válida la división entre 0");
         }
     }
 
+    // Sobrecarga Método divide para realizar una División sobre ans
+    public double divide(double n1) {
+        if (n1 != 0) {
+            ans /= n1;
+            return ans;
+        } else {
+            throw new ArithmeticException("No es válida la división entre 0");
+        }
+    }
+
+
+    // Metodo para borrar ans
+
+    public void borrar() {
+        ans = 0.0;
+    }
 
 }
